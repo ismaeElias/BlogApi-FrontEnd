@@ -1,10 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Link } from 'react-router-dom';
+
 
 export const BackgroundMain = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1A2C5B;
+  background-color: #f2f2f2;
+
   height: 100%;
   width: 100%;
 `;
@@ -12,31 +15,33 @@ export const BackgroundMain = styled.div`
 export const Conteiner = styled.div`
   width: 760px;
   height: 510px;
-  
+
+  border-radius: 20px 20px 20px 20px;
+  -webkit-box-shadow: 7px 8px 15px -4px rgba(0, 0, 0, 0.74);
+  box-shadow: 7px 8px 15px -4px rgba(0, 0, 0, 0.74);
 
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas : 'LOGO LOGIN';
+  grid-template-areas: "LOGO LOGIN";
 `;
 
 export const Logo = styled.section`
   align-items: center;
   display: flex;
-  background-color: #fff;  
+  background-color: #fff;
   border-radius: 20px 0px 0px 20px;
-  grid-area: 'LOGO';
+  grid-area: "LOGO";
   justify-content: center;
   height: 100%;
   width: 100%;
 `;
 
-
 export const Login = styled.aside`
-  grid-area: 'LOGIN';
+  grid-area: "LOGIN";
   width: 100%;
   height: 100%;
-  background-color: #7971EA;  
+  background-color: #7971ea;
   border-radius: 0px 20px 20px 0px;
 
   display: flex;
@@ -44,7 +49,7 @@ export const Login = styled.aside`
   justify-content: center;
   flex-direction: column;
 
-  & > form{
+  & > form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +64,6 @@ export const Title = styled.h1`
   padding-bottom: 50px;
 `;
 
-
 export const InputStyled = styled.input`
   background-color: transparent;
   font-weight: bold;
@@ -69,12 +73,25 @@ export const InputStyled = styled.input`
   margin-bottom: 25px;
   margin-left: 15px;
 
-
-  &::placeholder{
+  &::placeholder {
     color: white;
   }
 
-  &:nth-child(2){
+  &:nth-child(2) {
     margin-bottom: 30px;
   }
+
+`;
+
+export const LinkStyled = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+`;
+
+export const TextSingUp = styled.p`
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 15px;
 `;

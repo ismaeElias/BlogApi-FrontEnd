@@ -6,30 +6,37 @@ import {
   Login,
   Title,
   InputStyled,
+  LinkStyled,
+  TextSingUp
 } from "./styles";
-import { IconContext } from "react-icons";
-
 import LogoMeuBlog from "../../assets/logoMeuBlog.png";
 import Button from "../../components/Button";
+import api from "../../services/api";
+import { login } from "../../services/auth";
+import { useHistory } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-import api from '../../services/api';
+import { IconContext } from "react-icons";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const history = useHistory();
 
-  
   async function handlerApi() {
-    
     try {
       await api
         .post("/login", {
           email: email,
-          senha: senha
+          senha: senha,
         })
         .then((response) => {
-          console.log(response);
+          const accessToken = response.headers.authorization;
+          const refreshToken = response.data.refreshToken;
+          if (accessToken) {
+            login(accessToken, refreshToken);
+            history.push("/home");
+          }
         });
     } catch (e) {
       console.log(e);
@@ -48,7 +55,6 @@ function LoginPage() {
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                console.log({ email: email, senha: senha });
                 handlerApi();
               }}
               autoComplete="off"
@@ -84,6 +90,9 @@ function LoginPage() {
                 ACESSAR
               </Button>
             </form>
+            <TextSingUp>
+              Não possui acesso? <LinkStyled to={'/SingIn'}>Cadastre-se</LinkStyled>
+            </TextSingUp>
           </Login>
         </IconContext.Provider>
       </Conteiner>
