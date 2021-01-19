@@ -42,6 +42,7 @@ function SingIn() {
                   valueText={nome}
                   onChangeForm={setNome}
                   textLabel={'Nome'}
+                  Error={''}
                 />
               </label>
               <label>
@@ -53,6 +54,7 @@ function SingIn() {
                   valueText={email}
                   onChangeForm={setEmail}
                   textLabel={'E-mail'}
+                  Error={''}
                 />
               </label>
               <label>
@@ -64,6 +66,7 @@ function SingIn() {
                   valueText={senha}
                   onChangeForm={setSenha}
                   textLabel={'Senha'}
+                  Error={'Preencha corretamente a senha!'}
                 />
               </label>
               <ButtonStyled type={"submit"} id={"cadastrar"}>

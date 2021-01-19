@@ -1,26 +1,41 @@
 import React from "react";
-import { InputStyled, SpanStyled, Container } from "./styles";
+import {
+  InputStyled,
+  SpanStyled,
+  Container,
+  Layout,
+  ErrorSpan,
+} from "./styles";
 
-function Input({ id, name, placeholder, type, valueText, onChangeForm,textLabel }) {
+function Input({
+  id,
+  name,
+  placeholder,
+  type,
+  valueText,
+  onChangeForm,
+  textLabel,
+  Error,
+}) {
   return (
-    <Container>
-      <label>
-       
-        <InputStyled
-          id={id}
-          name={name}
-          placeholder={placeholder}
-          type={type}
-          value={valueText}
-          onChange={(event) => {
-            onChangeForm(event.target.value);
-          }}
-        />
-         <SpanStyled>
-          {textLabel}
-        </SpanStyled>
-      </label>
-    </Container>
+    <Layout>
+      <Container>
+        <label>
+          <InputStyled
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            type={type}
+            value={valueText}
+            onChange={(event) => {
+              onChangeForm(event.target.value);
+            }}
+          />
+          <SpanStyled>{textLabel}</SpanStyled>
+        </label>
+        {Error ? <ErrorSpan>{Error}</ErrorSpan> : <p />}
+      </Container>
+    </Layout>
   );
 }
 
