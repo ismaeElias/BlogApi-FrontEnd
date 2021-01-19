@@ -23,7 +23,7 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const history = useHistory();
-
+  let linkGithub = 'https://github.com/ismaeElias';
   async function handlerApi() {
     try {
       await api
@@ -98,7 +98,7 @@ function LoginPage() {
           </Login>
         </IconContext.Provider>
       </Conteiner>
-      <Developed>Developed by - <a target="_blank" href="https://github.com/ismaeElias">Ismael Elias</a> &#128151;</Developed>
+      <Developed>Developed by - <a target="_blank" href={linkGithub} rel="noopener noreferrer" >Ismael Elias</a> &#128151;</Developed>
     </BackgroundMain>
   );
 }
