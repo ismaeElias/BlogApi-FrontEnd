@@ -16,8 +16,7 @@ export const InputStyled = styled.input`
   border: 1px solid white;
   width: 300px;
   height: 40px;
-  -webkit-box-shadow: 2px 1px 15px -2px #000000;
-  box-shadow: 2px 1px 15px -2px #000000;
+  border-radius: 5px;
 
   padding-left: 10px;
 

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+
 import { BackgroundContainer, Conteiner, Layout, Header } from "./styles";
 import ButtonStyled from "../../components/Button";
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
+import api from '../../services/api';
 
 import InputStyled from "../../components/Input";
 
@@ -11,9 +14,19 @@ function SingIn() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const history = useHistory();
 
-  function handlerApi(e){
-    
+  async function handlerApi(e){
+    await api.post('/usuarios',{
+      nome : nome,
+      email: email,
+      senha : senha
+    }).then((response) => {
+      console.log(response);
+      history.push('/login');
+    }).catch((error) => {
+      console.log(error);
+    })
   }
 
   return (
@@ -33,7 +46,7 @@ function SingIn() {
               console.log({nome: nome, email : email , senha:senha});
             }}>
               <h2>Preencha as credenciais</h2>
-              <label>
+              
                 <InputStyled
                   id={"nome"}
                   name={"nome"}
@@ -44,8 +57,7 @@ function SingIn() {
                   textLabel={'Nome'}
                   Error={''}
                 />
-              </label>
-              <label>
+              
                 <InputStyled
                   id={"email"}
                   name={"email"}
@@ -56,19 +68,17 @@ function SingIn() {
                   textLabel={'E-mail'}
                   Error={''}
                 />
-              </label>
-              <label>
+              
                 <InputStyled
                   id={"senha"}
                   name={"senha"}
                   placeholder={""}
-                  type={"text"}
+                  type={"password"}
                   valueText={senha}
                   onChangeForm={setSenha}
                   textLabel={'Senha'}
-                  Error={'Preencha corretamente a senha!'}
+                  Error={''}
                 />
-              </label>
               <ButtonStyled type={"submit"} id={"cadastrar"}>
                 Cadastrar
               </ButtonStyled>
