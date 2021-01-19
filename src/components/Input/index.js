@@ -1,12 +1,26 @@
 import React from "react";
-import { InputStyled } from "./styles";
+import { InputStyled, SpanStyled, Container } from "./styles";
 
-function Input({ id, name, placeholder, type, valueText , onChangeForm }) {
+function Input({ id, name, placeholder, type, valueText, onChangeForm,textLabel }) {
   return (
-    <InputStyled id={id} name={name} placeholder={placeholder} type={type} value={valueText}
-    onChange={(event) => {
-      onChangeForm(event.target.value);
-    }} />
+    <Container>
+      <label>
+       
+        <InputStyled
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          type={type}
+          value={valueText}
+          onChange={(event) => {
+            onChangeForm(event.target.value);
+          }}
+        />
+         <SpanStyled>
+          {textLabel}
+        </SpanStyled>
+      </label>
+    </Container>
   );
 }
 

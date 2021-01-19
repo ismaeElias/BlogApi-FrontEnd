@@ -34,36 +34,36 @@ function SingIn() {
             }}>
               <h2>Preencha as credenciais</h2>
               <label>
-                <p>Nome Completo:</p>
                 <InputStyled
                   id={"nome"}
                   name={"nome"}
-                  placeholder={"Insira seu nome completo..."}
+                  placeholder={""}
                   type={"text"}
                   valueText={nome}
                   onChangeForm={setNome}
+                  textLabel={'Nome'}
                 />
               </label>
               <label>
-                <p>E-mail:</p>
                 <InputStyled
                   id={"email"}
                   name={"email"}
-                  placeholder={"Insira seu email..."}
+                  placeholder={""}
                   type={"email"}
                   valueText={email}
                   onChangeForm={setEmail}
+                  textLabel={'E-mail'}
                 />
               </label>
               <label>
-                <p>Senha:</p>
                 <InputStyled
                   id={"senha"}
                   name={"senha"}
-                  placeholder={"Insira sua senha..."}
+                  placeholder={""}
                   type={"text"}
                   valueText={senha}
                   onChangeForm={setSenha}
+                  textLabel={'Senha'}
                 />
               </label>
               <ButtonStyled type={"submit"} id={"cadastrar"}>
