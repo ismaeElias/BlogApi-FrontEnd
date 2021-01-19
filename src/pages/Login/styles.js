@@ -95,3 +95,11 @@ export const TextSingUp = styled.p`
   font-size: 15px;
   margin-top: 15px;
 `;
+
+
+export const Developed = styled.h3`
+  position: absolute;
+  bottom : 0px;
+  color: #7971ea;
+  font-size: 13px;
+`;

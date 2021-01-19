@@ -7,7 +7,8 @@ import {
   Title,
   InputStyled,
   LinkStyled,
-  TextSingUp
+  TextSingUp,
+  Developed,
 } from "./styles";
 import LogoMeuBlog from "../../assets/logoMeuBlog.png";
 import Button from "../../components/Button";
@@ -91,17 +92,15 @@ function LoginPage() {
               </Button>
             </form>
             <TextSingUp>
-              Não possui acesso? <LinkStyled to={'/SingIn'}>Cadastre-se</LinkStyled>
+              Não possui acesso?{" "}
+              <LinkStyled to={"/SingIn"}>Cadastre-se</LinkStyled>
             </TextSingUp>
           </Login>
         </IconContext.Provider>
       </Conteiner>
+      <Developed>Developed by - <a target="_blank" href="https://github.com/ismaeElias">Ismael Elias</a> &#128151;</Developed>
     </BackgroundMain>
   );
 }
 
 export default LoginPage;
-
-
-
-
