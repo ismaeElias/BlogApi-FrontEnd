@@ -1,8 +1,8 @@
 import React from "react";
 import { HeaderStyled } from "./styles";
 
-function Header() {
-  return <HeaderStyled>Header</HeaderStyled>;
+function Header({ children }) {
+  return <HeaderStyled>{children}</HeaderStyled>;
 }
 
 export default Header;

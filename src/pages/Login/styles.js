@@ -85,7 +85,6 @@ export const InputStyled = styled.input`
 
 export const LinkStyled = styled(Link)`
   color: white;
-  text-decoration: none;
   font-weight: bold;
 `;
 
