@@ -34,9 +34,9 @@ function LoginPage() {
         .then((response) => {
           const accessToken = response.headers.authorization;
           const refreshToken = response.data.refreshToken;
-          const id = response.data.id;
+        
           if (accessToken) {
-            login(accessToken, refreshToken,id);
+            login(accessToken, refreshToken, response.data.usuario);
             history.push("/home");
           }
         });

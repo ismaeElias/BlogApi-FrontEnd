@@ -1,18 +1,16 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { ContainerUsuario, ContainerSearch, ContainerLogo } from "./styles";
-import { useHistory } from "react-router-dom";
-import { Atualiza, ID,REFRESHTOKEN_KEY } from '../../services/auth';
-import api from "../../services/api";
-
+import { USUARIO } from "../../services/auth";
+import Dropdown from "../../components/Dropdown";
 
 function HomePage() {
-    const history = useHistory();
-
-    const  handlerGetUser = useCallback( async () => {
+  /* Refresh TOKEN
+      const  handlerGetUser = useCallback( async () => {
         const id = localStorage.getItem(ID);
         await api.get(`/usuarios/${id}`).then((response) => {
                 setNome(response.data.nome);  
+                console.log(response);
         }).catch(async () => {
             await api.post('/usuarios/atualiza_token', {
                 refreshToken : localStorage.getItem(REFRESHTOKEN_KEY) 
@@ -26,22 +24,25 @@ function HomePage() {
                 history.push("/login");
             })
         })
-    },[history])
-    
-  const [nome , setNome] = useState('Nome Usuario'); 
-  useEffect( () => {
-        handlerGetUser();
-        
-  }, [handlerGetUser]);
+    },[history])*/
+
+  const [nome, setNome] = useState("Nome Usuario");
+  useEffect(() => {
+    const User = JSON.parse(localStorage.getItem(USUARIO));
+    setNome(User.nome);
+  }, []);
 
   return (
-    <Header>
-      <ContainerLogo>logo</ContainerLogo>
-      <ContainerSearch>search</ContainerSearch>
-      <ContainerUsuario>
-        <h3>{nome}</h3>
-      </ContainerUsuario>
-    </Header>
+    <>
+      <Header>
+        <ContainerLogo>logo</ContainerLogo>
+        <ContainerSearch>search</ContainerSearch>
+        <ContainerUsuario>
+          <Dropdown>{nome}</Dropdown>
+        </ContainerUsuario>
+      </Header>
+      <div>container</div>
+    </>
   );
 }
 
