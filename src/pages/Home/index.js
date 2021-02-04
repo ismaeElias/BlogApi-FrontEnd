@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import { ContainerUsuario, ContainerSearch, ContainerLogo } from "./styles";
+import { ContainerUsuario, ContainerSearch, ContainerLogo,Container,ContainerPost } from "./styles";
 import { USUARIO } from "../../services/auth";
 import Dropdown from "../../components/Dropdown";
+import { useStyle, themes } from "../../services/context";
 
 function HomePage() {
   /* Refresh TOKEN
@@ -27,13 +28,18 @@ function HomePage() {
     },[history])*/
 
   const [nome, setNome] = useState("Nome Usuario");
+  const { setStyle } = useStyle();
+
+  function handlerOpen() {
+    setStyle(themes.displayOff);
+  }
   useEffect(() => {
     const User = JSON.parse(localStorage.getItem(USUARIO));
     setNome(User.nome);
   }, []);
 
   return (
-    <>
+    <Container>
       <Header>
         <ContainerLogo>logo</ContainerLogo>
         <ContainerSearch>search</ContainerSearch>
@@ -41,8 +47,14 @@ function HomePage() {
           <Dropdown>{nome}</Dropdown>
         </ContainerUsuario>
       </Header>
-      <div>container</div>
-    </>
+      <ContainerPost
+        onClick={() => {
+          handlerOpen();
+        }}
+      >
+        
+      </ContainerPost>
+    </Container>
   );
 }
 

@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Container,ContainerDD } from './styles';
+import React from "react";
+import { Container, ContainerDD } from "./styles";
+import { FaUserAlt } from "react-icons/fa";
+import { IoIosSad } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
+import { IconContext } from "react-icons";
+import { useStyle } from "../../services/context";
 
-function Dropdown({children}) {
-  const [open , setOpen ] = useState('none');
+function Dropdown({ children }) {
 
-  useEffect(() => {
-    const DropDown = open;
-    setOpen(DropDown);
-  },[open]);
+  const { styleTheme } = useStyle();
 
-  function handlerOpen(){
-    if(open === 'none'){
-      setOpen('block');
-    }else {
-      setOpen('none');
-    }
+  function handlerOpen() {
+    styleTheme();
   }
 
   return (
     <Container>
-      <h3 onClick={handlerOpen}>{children}</h3>
-      <ContainerDD open={open} >
-        <a href="/Perfil">Perfil</a>
-        <a href="/logout">Sair</a>
-      </ContainerDD>
+      <IconContext.Provider value={{ color: "white", size: "20px" }}>
+        <h3 onClick={handlerOpen}>
+          {children} <IoIosArrowDown />
+        </h3>
+        <ContainerDD>
+          <a href="/Perfil">
+            <FaUserAlt />
+            Perfil
+          </a>
+          <a href="/login">
+            <IoIosSad />
+            Sair
+          </a>
+        </ContainerDD>
+      </IconContext.Provider>
     </Container>
   );
 }
