@@ -3,6 +3,7 @@ import { Container, Header, Main, Footer, ContainerDropdown } from "./styles";
 import { FiMoreVertical } from "react-icons/fi";
 import { AiTwotoneEdit } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
+import { format } from "date-fns";
 
 function Card({ id, titulo, conteudo, criadoEm }) {
   function handlerDropdown() {
@@ -12,6 +13,7 @@ function Card({ id, titulo, conteudo, criadoEm }) {
       setDisable(0);
     }
   }
+  
   const [disable, setDisable] = useState(0);
 
   return (
@@ -40,7 +42,7 @@ function Card({ id, titulo, conteudo, criadoEm }) {
         <p>{conteudo}</p>
       </Main>
       <Footer>
-        <p>Creado em: {criadoEm}</p>
+        <p>Creado em: {format(Date.parse(criadoEm),'dd/MM/yyyy')}</p>
       </Footer>
     </Container>
   );
