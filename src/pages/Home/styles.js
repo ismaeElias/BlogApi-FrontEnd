@@ -38,6 +38,7 @@ export const ContainerPost = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
+  z-index: 1;
 `;
 
 export const InputStyled = styled.input`
@@ -56,7 +57,7 @@ export const ContainerInput = styled.div`
     position: absolute;
     border-radius: 0px 2px 0 0; 
     left: 172px;
-    background-color: rgba(59,50,196,.7);
+    background-color: #8A85D0;// rgba(59,50,196,.7);
     z-index: 1;
     cursor: pointer;
     transition: 0.2s all ease-in-out;

@@ -4,12 +4,9 @@ import { FiMoreVertical } from "react-icons/fi";
 import { AiTwotoneEdit } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 
-
-
-function Card() {
-
+function Card({ id, titulo, conteudo, criadoEm }) {
   function handlerDropdown() {
-    if(disable === 0){
+    if (disable === 0) {
       setDisable(1);
     } else {
       setDisable(0);
@@ -18,12 +15,14 @@ function Card() {
   const [disable, setDisable] = useState(0);
 
   return (
-    <Container>
+    <Container key={id}>
       <Header>
-        <h1> Titulo </h1>
-        <button onClick={()=>{
-          handlerDropdown();
-        }}>
+        <h1> {titulo} </h1>
+        <button
+          onClick={() => {
+            handlerDropdown();
+          }}
+        >
           <FiMoreVertical />
         </button>
         <ContainerDropdown isOpen={disable}>
@@ -38,10 +37,10 @@ function Card() {
         </ContainerDropdown>
       </Header>
       <Main>
-        <p>Conteudo</p>
+        <p>{conteudo}</p>
       </Main>
       <Footer>
-        <p>Creado em: 22/02/2021</p>
+        <p>Creado em: {criadoEm}</p>
       </Footer>
     </Container>
   );

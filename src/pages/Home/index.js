@@ -7,11 +7,11 @@ import {
   Container,
   ContainerPost,
   InputStyled,
-  ContainerInput
+  ContainerInput,
 } from "./styles";
+import api from "../../services/api";
 import { USUARIO } from "../../services/auth";
 import { BiSearch } from "react-icons/bi";
-import Logo from "../../assets/logo.png";
 import Dropdown from "../../components/Dropdown";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
@@ -37,28 +37,36 @@ function HomePage() {
             })
         })
     },[history])*/
-
   const [nome, setNome] = useState("Nome Usuario");
   const { setStyle } = useStyle();
+  const [postagem, setPostagens] = useState([]);
+
+  async function handlerGetPost(id) {
+    await api.get(`/usuarios/${id}/postagem`).then((response) => {
+      setPostagens(response.data);
+    });
+  }
 
   function handlerOpen() {
     setStyle(themes.displayOff);
   }
+
   useEffect(() => {
     const User = JSON.parse(localStorage.getItem(USUARIO));
     setNome(User.nome);
+    handlerGetPost(User.id);
   }, []);
 
   return (
     <Container>
       <Header>
         <ContainerLogo>
-          <img src={Logo} alt="Logo meu blog" />
+          <h3>Meu Blog</h3>
         </ContainerLogo>
         <ContainerSearch>
           <ContainerInput>
             <InputStyled placeholder="Buscar" />
-            <BiSearch color={'white'} size={28}/>
+            <BiSearch color={"white"} size={28} />
           </ContainerInput>
         </ContainerSearch>
         <ContainerUsuario>
@@ -70,8 +78,16 @@ function HomePage() {
           handlerOpen();
         }}
       >
-        <Card />
-        <Card />
+        {postagem.map(postagens => {
+          return <Card
+            key={postagens.id}
+            id={postagens.id}
+            titulo={postagens.titulo}
+            conteudo={postagens.conteudo}
+            criadoEm={postagens.createdAt}
+          />;
+        })}
+        
       </ContainerPost>
     </Container>
   );

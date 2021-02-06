@@ -10,8 +10,8 @@ export const Container = styled.article`
   background-color: #f0f0f0;
   margin: 5px;
   border-radius: 5px;
-
   position: relative;
+  
 `;
 
 
@@ -19,17 +19,16 @@ export const ContainerDropdown = styled.ul`
   display: 'block';
   opacity: ${props => props.isOpen};
   position: absolute;
-  z-index: 1;
   background-color: #9f9f9f;
   width: 70px;
   left: 170px;
   top: 35px;
   border: 1px solid #bdbdbd;
   border-radius: 3px;
-  
   transition: 0.3s all ease-in-out;
 
   li {
+    
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -37,11 +36,11 @@ export const ContainerDropdown = styled.ul`
     font-size: 13px;
     padding: 1px 2px;
     color: #fff;
-    cursor: pointer;
     transition: 0.3s all ease-in-out;
 
     p {
       margin-left: 10px;
+      cursor:default;
     }
   }
 
@@ -52,6 +51,7 @@ export const ContainerDropdown = styled.ul`
   li:hover {
     background-color: #797979;
   }
+  
 `;
 
 
