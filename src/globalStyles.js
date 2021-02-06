@@ -11,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
     input {
         border: none;
     }
+    button{
+        border : none;
+    }
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,

@@ -17,6 +17,11 @@ export const ContainerSearch = styled(displayFlex)`
 export const ContainerLogo = styled(displayFlex)`
   color: white;
   justify-content: flex-start;
+
+  img {
+    width: 80px;
+    height: 40px;
+  }
 `;
 
 export const Container = styled.div`
@@ -27,5 +32,10 @@ export const Container = styled.div`
 export const ContainerPost = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: 50px;
+  padding-top: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
 `;

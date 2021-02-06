@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-
+  
   & > h3 {
     display: flex;
     justify-content: flex-start;
@@ -17,11 +17,12 @@ export const Container = styled.div`
 export const ContainerDD = styled.div`
   display: ${(props) => props.theme.display};
   position: absolute;
+  top: 40px;
   background-color: #7971ea;
   border: 1px solid #2c188a;
   border-radius: 4px;
   float: left;
-  min-width: 130px;
+  min-width: 135px;
 
   & > a {
     display: flex;

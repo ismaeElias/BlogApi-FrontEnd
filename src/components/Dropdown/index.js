@@ -7,7 +7,6 @@ import { IconContext } from "react-icons";
 import { useStyle } from "../../services/context";
 
 function Dropdown({ children }) {
-
   const { styleTheme } = useStyle();
 
   function handlerOpen() {

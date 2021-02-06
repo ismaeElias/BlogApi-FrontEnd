@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Header";
-import { ContainerUsuario, ContainerSearch, ContainerLogo,Container,ContainerPost } from "./styles";
-import { USUARIO } from "../../services/auth";
-import Dropdown from "../../components/Dropdown";
 import { useStyle, themes } from "../../services/context";
+import {
+  ContainerUsuario,
+  ContainerSearch,
+  ContainerLogo,
+  Container,
+  ContainerPost,
+} from "./styles";
+import { USUARIO } from "../../services/auth";
+import Logo from "../../assets/logoMeuBlog.png";
+import Dropdown from "../../components/Dropdown";
+import Header from "../../components/Header";
+import Card from "../../components/Card";
 
 function HomePage() {
   /* Refresh TOKEN
@@ -41,7 +49,9 @@ function HomePage() {
   return (
     <Container>
       <Header>
-        <ContainerLogo>logo</ContainerLogo>
+        <ContainerLogo>
+          <img src={Logo} alt="Logo meu blog" />
+        </ContainerLogo>
         <ContainerSearch>search</ContainerSearch>
         <ContainerUsuario>
           <Dropdown>{nome}</Dropdown>
@@ -52,7 +62,9 @@ function HomePage() {
           handlerOpen();
         }}
       >
-        
+        <Card />
+
+        <Card />
       </ContainerPost>
     </Container>
   );
