@@ -40,7 +40,7 @@ function SingIn() {
               </Link>
             </Header>
 
-            <form onSubmit={(e) => {
+            <form  autoComplete="off" onSubmit={(e) => {
               e.preventDefault();
               handlerApi();
               console.log({nome: nome, email : email , senha:senha});

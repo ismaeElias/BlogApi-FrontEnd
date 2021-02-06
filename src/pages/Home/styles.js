@@ -19,8 +19,8 @@ export const ContainerLogo = styled(displayFlex)`
   justify-content: flex-start;
 
   img {
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 50px;
   }
 `;
 
@@ -38,4 +38,31 @@ export const ContainerPost = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
+`;
+
+export const InputStyled = styled.input`
+  background-color: rgba(227,227,227,.3);
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  border-radius: 2px 2px 0 0; 
+  height: 30px;
+  width: 200px;
+  padding: 0px 30px 0 4px;
+`;
+
+export const ContainerInput = styled.div`
+  position: relative;
+  svg{
+    position: absolute;
+    border-radius: 0px 2px 0 0; 
+    left: 172px;
+    background-color: rgba(59,50,196,.7);
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+  }
+  svg:hover{
+    background-color: #726DC1;
+    color: #D7D7D7;
+  }
 `;

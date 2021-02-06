@@ -59,7 +59,6 @@ function LoginPage() {
                 event.preventDefault();
                 handlerApi();
               }}
-              autoComplete="off"
             >
               <label>
                 <FaUserCircle />

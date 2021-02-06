@@ -6,9 +6,12 @@ import {
   ContainerLogo,
   Container,
   ContainerPost,
+  InputStyled,
+  ContainerInput
 } from "./styles";
 import { USUARIO } from "../../services/auth";
-import Logo from "../../assets/logoMeuBlog.png";
+import { BiSearch } from "react-icons/bi";
+import Logo from "../../assets/logo.png";
 import Dropdown from "../../components/Dropdown";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
@@ -52,7 +55,12 @@ function HomePage() {
         <ContainerLogo>
           <img src={Logo} alt="Logo meu blog" />
         </ContainerLogo>
-        <ContainerSearch>search</ContainerSearch>
+        <ContainerSearch>
+          <ContainerInput>
+            <InputStyled placeholder="Buscar" />
+            <BiSearch color={'white'} size={28}/>
+          </ContainerInput>
+        </ContainerSearch>
         <ContainerUsuario>
           <Dropdown>{nome}</Dropdown>
         </ContainerUsuario>
@@ -63,7 +71,6 @@ function HomePage() {
         }}
       >
         <Card />
-
         <Card />
       </ContainerPost>
     </Container>

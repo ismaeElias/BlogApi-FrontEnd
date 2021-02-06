@@ -15,7 +15,7 @@ function Input({
   valueText,
   onChangeForm,
   textLabel,
-  Error,
+  Error
 }) {
   return (
     <Layout>
@@ -30,6 +30,7 @@ function Input({
             onChange={(event) => {
               onChangeForm(event.target.value);
             }}
+            autoComplete="off"
           />
           <SpanStyled>{textLabel}</SpanStyled>
         </label>
