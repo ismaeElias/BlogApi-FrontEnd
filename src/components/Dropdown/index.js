@@ -1,4 +1,7 @@
 import React from "react";
+import { logout } from "../../services/auth";
+
+import { Link } from "react-router-dom";
 import { Container, ContainerDD } from "./styles";
 import { FaUserAlt } from "react-icons/fa";
 import { IoIosSad } from "react-icons/io";
@@ -8,9 +11,12 @@ import { useStyle } from "../../services/context";
 
 function Dropdown({ children }) {
   const { styleTheme } = useStyle();
-
   function handlerOpen() {
     styleTheme();
+  }
+
+  async function handlerLogout() {
+    await logout();
   }
 
   return (
@@ -20,14 +26,19 @@ function Dropdown({ children }) {
           {children} <IoIosArrowDown />
         </h3>
         <ContainerDD>
-          <a href="/Perfil">
+          <Link to="/Perfil">
             <FaUserAlt />
             Perfil
-          </a>
-          <a href="/login">
+          </Link>
+          <Link to='/login'
+            onClick={() => {
+              handlerOpen();
+              handlerLogout();
+            }}
+          >
             <IoIosSad />
             Sair
-          </a>
+          </Link>
         </ContainerDD>
       </IconContext.Provider>
     </Container>
