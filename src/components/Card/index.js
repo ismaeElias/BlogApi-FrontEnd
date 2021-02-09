@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../services/api";
 import { Container, Header, Main, Footer, ContainerDropdown } from "./styles";
 import { FiMoreVertical } from "react-icons/fi";
 import { AiTwotoneEdit } from "react-icons/ai";
@@ -13,7 +14,20 @@ function Card({ id, titulo, conteudo, criadoEm }) {
       setDisable(0);
     }
   }
-  
+
+  async function handlerDeletePost(id) {
+    const PostID = id;
+    const UserID = JSON.parse(localStorage.getItem("@MeuBlog-Usuario"));
+    await api
+      .delete(`/usuarios/${UserID.id}/postagem/${PostID}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   const [disable, setDisable] = useState(0);
 
   return (
@@ -34,7 +48,13 @@ function Card({ id, titulo, conteudo, criadoEm }) {
           </li>
           <li>
             <FaTrashAlt />
-            <p>Excluir</p>
+            <p
+              onClick={() => {
+                handlerDeletePost(id);
+              }}
+            >
+              Excluir
+            </p>
           </li>
         </ContainerDropdown>
       </Header>
@@ -42,7 +62,7 @@ function Card({ id, titulo, conteudo, criadoEm }) {
         <p>{conteudo}</p>
       </Main>
       <Footer>
-        <p>Criado em: {format(Date.parse(criadoEm),'dd/MM/yyyy')}</p>
+        <p>Criado em: {format(Date.parse(criadoEm), "dd/MM/yyyy")}</p>
       </Footer>
     </Container>
   );
