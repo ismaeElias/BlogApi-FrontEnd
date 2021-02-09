@@ -65,7 +65,7 @@ function HomePage() {
         </ContainerLogo>
         <ContainerSearch>
           <ContainerInput>
-            <InputStyled placeholder="Buscar" />
+            <InputStyled placeholder="Buscar" type='search'/>
             <BiSearch color={"white"} size={28} />
           </ContainerInput>
         </ContainerSearch>

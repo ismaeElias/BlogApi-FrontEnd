@@ -2,7 +2,7 @@ import React from "react";
 import { logout } from "../../services/auth";
 
 import { Link } from "react-router-dom";
-import { Container, ContainerDD } from "./styles";
+import { Container, ContainerDD,ArrowStyled } from "./styles";
 import { FaUserAlt } from "react-icons/fa";
 import { IoIosSad } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
@@ -26,6 +26,7 @@ function Dropdown({ children }) {
           {children} <IoIosArrowDown />
         </h3>
         <ContainerDD>
+          <ArrowStyled/>
           <Link to="/Perfil">
             <FaUserAlt />
             Perfil

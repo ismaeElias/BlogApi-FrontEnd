@@ -42,7 +42,7 @@ function Card({ id, titulo, conteudo, criadoEm }) {
         <p>{conteudo}</p>
       </Main>
       <Footer>
-        <p>Creado em: {format(Date.parse(criadoEm),'dd/MM/yyyy')}</p>
+        <p>Criado em: {format(Date.parse(criadoEm),'dd/MM/yyyy')}</p>
       </Footer>
     </Container>
   );
