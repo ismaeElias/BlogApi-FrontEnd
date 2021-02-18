@@ -5,16 +5,15 @@ import {
   ContainerSearch,
   ContainerLogo,
   Container,
-  ContainerPost,
   InputStyled,
   ContainerInput,
 } from "./styles";
-import api from "../../services/api";
 import { USUARIO } from "../../services/auth";
 import { BiSearch } from "react-icons/bi";
 import Dropdown from "../../components/Dropdown";
 import Header from "../../components/Header";
-import Card from "../../components/Card";
+import ContainerPost from '../../components/ContainerPost';
+import { usePosts } from "../../services/context/PostContext";
 
 function HomePage() {
   /* Refresh TOKEN
@@ -37,30 +36,25 @@ function HomePage() {
             })
         })
     },[history])*/
+    
   const [nome, setNome] = useState("Nome Usuario");
   const { setStyle } = useStyle();
-  const [postagem, setPostagens] = useState([]);
-
-  async function handlerGetPost(id) {
-    await api.get(`/usuarios/${id}/postagem`).then((response) => {
-      setPostagens(response.data);
-    });
-  }
+  const User = JSON.parse(localStorage.getItem(USUARIO));  
+  const { post } = usePosts();
 
   function handlerOpen() {
     setStyle(themes.displayOff);
   }
 
   useEffect(() => {
-    const User = JSON.parse(localStorage.getItem(USUARIO));
     setNome(User.nome);
-    handlerGetPost(User.id);
-  }, []);
+  }, [User.nome,post]);
+
 
   return (
     <Container>
       <Header>
-        <ContainerLogo>
+        <ContainerLogo> 
           <h3>Meu Blog</h3>
         </ContainerLogo>
         <ContainerSearch>
@@ -73,22 +67,9 @@ function HomePage() {
           <Dropdown>{nome}</Dropdown>
         </ContainerUsuario>
       </Header>
-      <ContainerPost
-        onClick={() => {
+      <ContainerPost onClick={() => {
           handlerOpen();
-        }}
-      >
-        {postagem.map(postagens => {
-          return <Card
-            key={postagens.id}
-            id={postagens.id}
-            titulo={postagens.titulo}
-            conteudo={postagens.conteudo}
-            criadoEm={postagens.createdAt}
-          />;
-        })}
-        
-      </ContainerPost>
+        }} IdUser={User.id}/>      
     </Container>
   );
 }

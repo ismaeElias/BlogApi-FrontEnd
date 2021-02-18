@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import api from "../../services/api";
 import { Container, Header, Main, Footer, ContainerDropdown } from "./styles";
 import { FiMoreVertical } from "react-icons/fi";
 import { AiTwotoneEdit } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { format } from "date-fns";
+import { usePosts } from "../../services/context/PostContext";
 
 function Card({ id, titulo, conteudo, criadoEm }) {
+  const {deletaPost} =  usePosts();
+  
   function handlerDropdown() {
     if (disable === 0) {
       setDisable(1);
@@ -18,16 +20,10 @@ function Card({ id, titulo, conteudo, criadoEm }) {
   async function handlerDeletePost(id) {
     const PostID = id;
     const UserID = JSON.parse(localStorage.getItem("@MeuBlog-Usuario"));
-    await api
-      .delete(`/usuarios/${UserID.id}/postagem/${PostID}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    deletaPost(UserID.id, PostID);
   }
-
+  
+  
   const [disable, setDisable] = useState(0);
 
   return (
