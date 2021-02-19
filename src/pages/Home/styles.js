@@ -57,7 +57,7 @@ export const ContainerInput = styled.div`
     position: absolute;
     border-radius: 0px 2px 0 0; 
     left: 172px;
-    background-color: #8A85D0;// rgba(59,50,196,.7);
+    background-color: #8A85D0;
     z-index: 1;
     cursor: pointer;
     transition: 0.2s all ease-in-out;
@@ -66,4 +66,14 @@ export const ContainerInput = styled.div`
     background-color: #726DC1;
     color: #D7D7D7;
   }
+`;
+
+export const Button = styled.button`
+    width: 150px;
+    height: 35px;
+    background-color: white;
+    margin-right : 30px;
+    border-radius: 2px;
+    color: #8A85D0;
+    font-weight: bold;
 `;

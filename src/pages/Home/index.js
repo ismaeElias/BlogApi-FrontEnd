@@ -7,13 +7,15 @@ import {
   Container,
   InputStyled,
   ContainerInput,
+  Button,
 } from "./styles";
 import { USUARIO } from "../../services/auth";
 import { BiSearch } from "react-icons/bi";
 import Dropdown from "../../components/Dropdown";
 import Header from "../../components/Header";
-import ContainerPost from '../../components/ContainerPost';
+import ContainerPost from "../../components/ContainerPost";
 import { usePosts } from "../../services/context/PostContext";
+import Modal from "../../components/Modal";
 
 function HomePage() {
   /* Refresh TOKEN
@@ -36,10 +38,10 @@ function HomePage() {
             })
         })
     },[history])*/
-    
+
   const [nome, setNome] = useState("Nome Usuario");
   const { setStyle } = useStyle();
-  const User = JSON.parse(localStorage.getItem(USUARIO));  
+  const User = JSON.parse(localStorage.getItem(USUARIO));
   const { post } = usePosts();
 
   function handlerOpen() {
@@ -48,28 +50,32 @@ function HomePage() {
 
   useEffect(() => {
     setNome(User.nome);
-  }, [User.nome,post]);
-
+  }, [User.nome, post]);
 
   return (
     <Container>
       <Header>
-        <ContainerLogo> 
+        <ContainerLogo>
           <h3>Meu Blog</h3>
         </ContainerLogo>
         <ContainerSearch>
           <ContainerInput>
-            <InputStyled placeholder="Buscar" type='search'/>
+            <InputStyled placeholder="Buscar" type="search" />
             <BiSearch color={"white"} size={28} />
           </ContainerInput>
         </ContainerSearch>
         <ContainerUsuario>
+          <Button>Nova postagem</Button>
           <Dropdown>{nome}</Dropdown>
         </ContainerUsuario>
       </Header>
-      <ContainerPost onClick={() => {
+      <ContainerPost
+        onClick={() => {
           handlerOpen();
-        }} IdUser={User.id}/>      
+        }}
+        IdUser={User.id}
+      />
+      <Modal/>
     </Container>
   );
 }
