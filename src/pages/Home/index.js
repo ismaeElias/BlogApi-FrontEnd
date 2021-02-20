@@ -41,8 +41,8 @@ function HomePage() {
 
   const [nome, setNome] = useState("Nome Usuario");
   const { setStyle } = useStyle();
-  const User = JSON.parse(localStorage.getItem(USUARIO));
   const { post } = usePosts();
+  const User = JSON.parse(localStorage.getItem(USUARIO));
 
   function handlerOpen() {
     setStyle(themes.displayOff);

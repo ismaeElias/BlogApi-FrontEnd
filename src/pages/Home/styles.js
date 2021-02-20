@@ -76,4 +76,11 @@ export const Button = styled.button`
     border-radius: 2px;
     color: #8A85D0;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    
+    &:hover {
+      color: #726DC1;
+      background-color: #eee;
+    }
 `;
